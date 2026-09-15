@@ -38,10 +38,10 @@ class EvaluationResult:
 
 class MoralAgent:
 
-def __init__(self, policy: Dict[str, Any] | None = None):
-    self.policy = policy or {
-        "policy_id": "MORALAGENT-DEFAULT-v0.1"
-    }
+    def __init__(self, policy: Dict[str, Any] | None = None):
+        self.policy = policy or {
+            "policy_id": "MORALAGENT-DEFAULT-v0.1"
+     }
 
     def evaluate(
         self,
@@ -231,12 +231,12 @@ def __init__(self, policy: Dict[str, Any] | None = None):
         return f"eval-{timestamp}"
 
 
-@staticmethod
-def result_to_dict(
-    result: EvaluationResult
-) -> Dict[str, Any]:
+    @staticmethod
+    def result_to_dict(
+        result: EvaluationResult
+    ) -> Dict[str, Any]:
 
-    return asdict(result)
+        return asdict(result)
 
 
 if __name__ == "__main__":
