@@ -2,6 +2,8 @@
 
 ## Human-Centered Ethical Governance for AI
 
+![MoralAgent Architecture](MoralAgent-Architecture-v0.1.png)
+
 AI systems are becoming increasingly capable of reasoning, planning, and taking actions on behalf of people and organizations.
 
 But intelligence does not necessarily create morality.
