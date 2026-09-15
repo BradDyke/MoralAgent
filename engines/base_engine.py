@@ -8,7 +8,7 @@ proposed actions to the MoralAgent governance layer.
 
 from abc import ABC, abstractmethod
 from typing import Any, Dict
-
+from uuid import uuid4
 
 class BaseEngine(ABC):
     """
@@ -40,9 +40,10 @@ class BaseEngine(ABC):
         MoralAgent action format.
         """
 
-        return {
-            "request": request,
-            "proposed_action": proposed_action,
-            "source_engine": self.engine_name,
-            "context": {},
-        }
+return {
+    "action_id": f"ACT-{uuid4().hex}",
+    "request": request,
+    "proposed_action": proposed_action,
+    "source_engine": self.engine_name,
+    "context": {},
+}
