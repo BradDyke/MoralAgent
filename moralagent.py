@@ -38,8 +38,10 @@ class EvaluationResult:
 
 class MoralAgent:
 
-    def __init__(self, policy: Dict[str, Any]):
-        self.policy = policy
+def __init__(self, policy: Dict[str, Any] | None = None):
+    self.policy = policy or {
+        "policy_id": "MORALAGENT-DEFAULT-v0.1"
+    }
 
     def evaluate(
         self,
