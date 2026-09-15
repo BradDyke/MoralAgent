@@ -40,10 +40,11 @@ class BaseEngine(ABC):
         MoralAgent action format.
         """
 
-return {
-    "action_id": f"ACT-{uuid4().hex}",
-    "request": request,
-    "proposed_action": proposed_action,
-    "source_engine": self.engine_name,
-    "context": {},
+        return {
+            "action_id": f"ACT-{uuid4().hex}",
+            "request": request,
+            "proposed_action": proposed_action,
+            "source_engine": self.engine_name,
+            "context": {},
+        }
 }
