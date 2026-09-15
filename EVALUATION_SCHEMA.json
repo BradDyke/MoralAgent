@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MoralAgent Evaluation Result",
+  "description": "Machine-readable evaluation result produced by the MoralAgent governance layer.",
+  "type": "object",
+  "required": [
+    "evaluation_id",
+    "timestamp",
+    "action_id",
+    "policy_id",
+    "risk_level",
+    "risk_factors",
+    "policy_result",
+    "uncertainty",
+    "human_review_required",
+    "decision",
+    "reason"
+  ],
+  "properties": {
+    "evaluation_id": {
+      "type": "string",
+      "description": "Unique identifier for the evaluation."
+    },
+
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time the evaluation was performed."
+    },
+
+    "action_id": {
+      "type": "string",
+      "description": "Identifier for the AI-proposed action."
+    },
+
+    "policy_id": {
+      "type": "string",
+      "description": "Policy used to evaluate the proposed action."
+    },
+
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "moderate",
+        "high",
+        "critical"
+      ],
+      "description": "Risk level determined by MoralAgent."
+    },
+
+    "risk_factors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Identified ethical, safety, security, legal, societal, or human-impact concerns."
+    },
+
+    "policy_result": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "review_required",
+        "violation"
+      ],
+      "description": "Result of applicable policy evaluation."
+    },
+
+    "uncertainty": {
+      "type": "boolean",
+      "description": "Indicates whether significant unresolved uncertainty remains."
+    },
+
+    "human_review_required": {
+      "type": "boolean",
+      "description": "Indicates whether authorized human review is required before consequential execution."
+    },
+
+    "decision": {
+      "type": "string",
+      "enum": [
+        "proceed",
+        "review",
+        "block"
+      ],
+      "description": "MoralAgent control decision."
+    },
+
+    "reason": {
+      "type": "string",
+      "description": "Human-readable explanation for the evaluation result."
+    }
+  },
+
+  "additionalProperties": false
+}
