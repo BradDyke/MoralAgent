@@ -231,6 +231,7 @@ def __init__(self, policy: Dict[str, Any] | None = None):
         return f"eval-{timestamp}"
 
 
+@staticmethod
 def result_to_dict(
     result: EvaluationResult
 ) -> Dict[str, Any]:
