@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MoralAgent Policy",
+  "description": "Machine-readable policy definition for the MoralAgent governance architecture.",
+  "type": "object",
+
+  "required": [
+    "policy_id",
+    "version",
+    "status",
+    "domain",
+    "name",
+    "owner",
+    "rules",
+    "decision"
+  ],
+
+  "properties": {
+
+    "policy_id": {
+      "type": "string",
+      "description": "Unique identifier for the policy."
+    },
+
+    "version": {
+      "type": "string",
+      "description": "Policy version."
+    },
+
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "suspended",
+        "retired"
+      ]
+    },
+
+    "name": {
+      "type": "string"
+    },
+
+    "description": {
+      "type": "string"
+    },
+
+    "domain": {
+      "type": "array",
+      "description": "Governance domains evaluated by the policy.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "safety",
+          "security",
+          "privacy",
+          "legal",
+          "human_impact",
+          "organizational",
+          "ethical",
+          "societal"
+        ]
+      },
+      "minItems": 1
+    },
+
+    "owner": {
+      "type": "string",
+      "description": "Human or organizational authority responsible for the policy."
+    },
+
+    "approval_authority": {
+      "type": "string",
+      "description": "Human authority responsible for approving policy changes."
+    },
+
+    "effective_date": {
+      "type": "string",
+      "format": "date"
+    },
+
+    "review_date": {
+      "type": "string",
+      "format": "date"
+    },
+
+    "rules": {
+      "type": "array",
+      "description": "Rules used to evaluate a proposed AI action.",
+      "items": {
+        "type": "object",
+
+        "required": [
+          "rule_id",
+          "condition",
+          "risk_level",
+          "response"
+        ],
+
+        "properties": {
+
+          "rule_id": {
+            "type": "string"
+          },
+
+          "condition": {
+            "type": "string",
+            "description": "Condition that triggers the rule."
+          },
+
+          "risk_level": {
+            "type": "string",
+            "enum": [
+              "low",
+              "moderate",
+              "high",
+              "critical"
+            ]
+          },
+
+          "response": {
+            "type": "string",
+            "enum": [
+              "allow",
+              "allow_with_controls",
+              "clarify",
+              "human_review",
+              "block"
+            ]
+          },
+
+          "requires_human_authorization": {
+            "type": "boolean",
+            "default": false
+          },
+
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+
+    "decision": {
+      "type": "object",
+
+      "required": [
+        "default_action",
+        "uncertainty_behavior"
+      ],
+
+      "properties": {
+
+        "default_action": {
+          "type": "string",
+          "enum": [
+            "allow",
+            "allow_with_controls",
+            "clarify",
+            "human_review",
+            "block"
+          ]
+        },
+
+        "uncertainty_behavior": {
+          "type": "string",
+          "enum": [
+            "allow",
+            "clarify",
+            "pause",
+            "human_review",
+            "block"
+          ]
+        },
+
+        "high_consequence_requires_human": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+
+    "audit": {
+      "type": "object",
+
+      "properties": {
+
+        "required": {
+          "type": "boolean",
+          "default": true
+        },
+
+        "retention_required": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    }
+  }
+}
