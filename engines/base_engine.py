@@ -34,8 +34,12 @@ class BaseEngine(ABC):
         """
         raise NotImplementedError
 
-    def create_action(
-    self,
+        def create_action(
+                self,
+        request: str,
+        proposed_action: str,
+        context: Dict[str, Any] | None = None,
+    ) -> Dict[str, Any]:
         """
         Convert an engine response into the standardized
         MoralAgent action format.
