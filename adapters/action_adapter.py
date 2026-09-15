@@ -41,7 +41,9 @@ class ActionAdapter:
 
         action = self.engine.create_action(
             request=request,
-            proposed_action=proposed_action
+            proposed_action=proposed_action,
+            context=context
+)
         )
 
         evaluation = self.moral_agent.evaluate(
