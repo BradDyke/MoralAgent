@@ -34,7 +34,8 @@ class BaseEngine(ABC):
         """
         raise NotImplementedError
 
-    def create_action(self, request: str, proposed_action: str) -> Dict[str, Any]:
+    def create_action(
+    self,
         """
         Convert an engine response into the standardized
         MoralAgent action format.
@@ -45,6 +46,6 @@ class BaseEngine(ABC):
             "request": request,
             "proposed_action": proposed_action,
             "source_engine": self.engine_name,
-            "context": {},
+            "context": context or {},
         }
 }
