@@ -43,7 +43,6 @@ class ActionAdapter:
             request=request,
             proposed_action=proposed_action,
             context=context
-)
         )
 
         evaluation = self.moral_agent.evaluate(
