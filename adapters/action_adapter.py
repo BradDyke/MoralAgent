@@ -45,7 +45,7 @@ class ActionAdapter:
         )
 
         evaluation = self.moral_agent.evaluate(
-            action_id=action["source_engine"],
+            action_id=action["action_id"],
             action=action["proposed_action"],
             risk_factors=risk_factors,
             uncertainty=uncertainty,
