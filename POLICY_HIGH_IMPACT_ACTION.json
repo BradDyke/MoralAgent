@@ -1,0 +1,37 @@
+{
+  "$schema": "./POLICY_SCHEMA.json",
+  "policy_id": "high-impact-human-decision",
+  "version": "0.1",
+  "status": "active",
+  "domain": "human-impact",
+  "name": "High-Impact Human Decision Policy",
+  "owner": "Human Governance Authority",
+  "rules": [
+    {
+      "rule_id": "HI-001",
+      "description": "Actions that may materially affect a person's rights, safety, access, employment, financial position, or essential services require additional review.",
+      "condition": "material_human_impact == true",
+      "severity": "high"
+    },
+    {
+      "rule_id": "HI-002",
+      "description": "The AI system must not make a consequential decision solely on the basis of uncertain, incomplete, or potentially biased information.",
+      "condition": "decision_uncertainty == true OR bias_risk == true",
+      "severity": "high"
+    },
+    {
+      "rule_id": "HI-003",
+      "description": "A consequential action must be escalated to an authorized human when policy conditions require human review.",
+      "condition": "human_review_required == true",
+      "severity": "critical"
+    }
+  ],
+  "decision": {
+    "default": "review",
+    "allowed": [
+      "proceed",
+      "review",
+      "block"
+    ]
+  }
+}
